@@ -43,3 +43,8 @@ WHERE area > 3000000 OR population > 250000000;
 -- Indonesia has a big population but a small area, it should be included.
 -- China has a big population and big area, it should be excluded.
 -- United Kingdom has a small population and a small area, it should be excluded.
+SELECT name, population, area
+FROM world
+WHERE area > 3000000 XOR population > 250000000;
+-- NOTE: Microsoft SQL does not recognize XOR
+
