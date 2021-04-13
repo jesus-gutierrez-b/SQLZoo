@@ -57,4 +57,9 @@ OR area < 3000000 AND population > 250000000;
 -- For South America show population in millions and GDP in billions both to 2 decimal places.
 -- Millions and billions
 -- Divide by 1000000 (6 zeros) for millions. Divide by 1000000000 (9 zeros) for billions.
+SELECT name, ROUND(population/1000000, 2) AS population, 
+             ROUND(gdp/1000000000, 2) AS GDP
+FROM world
+WHERE continent = 'South America';
+
 
