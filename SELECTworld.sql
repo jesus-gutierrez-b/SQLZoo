@@ -69,3 +69,16 @@ SELECT name, ROUND(gdp/population, -3) AS 'GDP per capita'
 FROM world
 WHERE gdp >= 1000000000000;
 
+-- 11. Greece has capital Athens.
+-- Each of the strings 'Greece', and 'Athens' has 6 characters.
+-- Show the name and capital where the name and the capital have the same number of characters.
+-- You can use the LENGTH function to find the number of characters in a string
+SELECT name, capital
+  FROM world
+ WHERE LEN(name) = LEN(capital);
+
+-- 12. The capital of Sweden is Stockholm. Both words start with the letter 'S'.
+-- Show the name and the capital where the first letters of each match. 
+-- Don't include countries where the name and the capital are the same word.
+-- You can use the function LEFT to isolate the first character.
+-- You can use <> as the NOT EQUALS operator.
