@@ -36,3 +36,8 @@ SELECT * FROM nobel
                   'Barack Obama');
 
 -- 7. Show the winners with first name John
+SELECT winner
+FROM nobel
+WHERE winner LIKE 'John%';
+
+-- 8. Show the year, subject, and name of Physics winners for 1980 together with the Chemistry winners for 1984.
