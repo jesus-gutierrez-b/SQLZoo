@@ -8,3 +8,11 @@ SELECT name FROM world
 -- 2. Show the countries in Europe with a per capita GDP greater than 'United Kingdom'.
 -- Per Capita GDP
 -- The per capita GDP is the gdp/population
+SELECT name
+FROM world
+WHERE continent = 'Europe'
+AND gdp/population > 
+(SELECT gdp/population FROM world WHERE name = 'United Kingdom');
+
+-- 3. List the name and continent of countries in the continents containing either Argentina or Australia. 
+-- Order by name of the country.
