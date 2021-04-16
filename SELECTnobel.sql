@@ -61,3 +61,10 @@ OR subject = 'Literature' AND yr >= 2004;
 -- 11. Find all details of the prize won by PETER GRÜNBERG
 -- Non-ASCII characters
 -- The u in his name has an umlaut. You may find this link useful https://en.wikipedia.org/wiki/%C3%9C#Keyboarding
+SELECT * 
+FROM nobel
+WHERE winner LIKE 'Eugene O''Neill';
+
+-- 13. Knights in order
+-- List the winners, year and subject where the winner starts with Sir. 
+-- Show the the most recent first, then by name order.
