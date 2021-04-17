@@ -50,3 +50,15 @@ WHERE continent = 'Europe';
 
 -- 6. Which countries have a GDP greater than every country in Europe? [Give the name only.] 
 -- (Some countries may have NULL gdp values)
+SELECT name
+FROM world
+WHERE gdp > ALL(SELECT gdp FROM world WHERE continent = 'Europe' AND gdp > 0);
+
+-- 7. Find the largest country (by area) in each continent, show the continent, the name and the area:
+-- The above example is known as a correlated or synchronized sub-query.
+-- Using correlated subqueries
+-- A correlated subquery works like a nested loop: the subquery only has access to rows related to a single record at a time in the outer query. 
+-- The technique relies on table aliases to identify two different uses of the same table, one in the outer query and the other in the subquery.
+-- One way to interpret the line in the WHERE clause that references the two table is “… where the correlated values are the same”.
+-- In the example provided, you would say “select the country details from world where the population is greater than or equal to the population 
+-- of all countries where the continent is the same”.
