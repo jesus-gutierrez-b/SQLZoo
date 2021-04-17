@@ -62,3 +62,17 @@ WHERE gdp > ALL(SELECT gdp FROM world WHERE continent = 'Europe' AND gdp > 0);
 -- One way to interpret the line in the WHERE clause that references the two table is “… where the correlated values are the same”.
 -- In the example provided, you would say “select the country details from world where the population is greater than or equal to the population 
 -- of all countries where the continent is the same”.
+SELECT continent, name, area FROM world x
+  WHERE area >= ALL
+    (SELECT area FROM world y
+        WHERE y.continent=x.continent
+          AND area>0)
+          
+-- 8. List each continent and the name of the country that comes first alphabetically.
+SELECT continent, name 
+FROM world a
+WHERE a.name <= ALL(SELECT name FROM world b WHERE a.continent = b.continent);
+
+-- 9. Find the continents where all countries have a population <= 25000000. 
+-- Then find the names of the countries associated with these continents. 
+-- Show name, continent and population.
