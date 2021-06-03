@@ -28,3 +28,4 @@ WHERE id= 1012;
 
 -- Modify it to show the player, teamid, stadium and mdate for every German goal.
 
+
