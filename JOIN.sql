@@ -52,4 +52,9 @@ WHERE gtime <= 10;
 -- Notice that because id is a column name in both game and eteam you must specify eteam.id instead of just id
 
 -- List the dates of the matches and the name of the team in which 'Fernando Santos' was the team1 coach.
+SELECT mdate, teamname
+FROM game JOIN eteam ON team1 = eteam.id
+WHERE coach = 'Fernando Santos';
+
+-- 7. List the player for every goal scored in a game where the stadium was 'National Stadium, Warsaw'
 
