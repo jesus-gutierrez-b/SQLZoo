@@ -70,4 +70,13 @@ WHERE stadium = 'National Stadium, Warsaw';
 -- You can use teamid!='GER' to prevent listing German players.
 
 -- You can use DISTINCT to stop players being listed twice.
+SELECT DISTINCT player
+FROM goal JOIN game ON matchid = id
+WHERE (team1 = 'GER' 
+OR team2 = 'GER')
+AND teamid != 'GER';
+
+-- 9. Show teamname and the total number of goals scored.
+-- COUNT and GROUP BY
+-- You should COUNT(*) in the SELECT line and GROUP BY teamname
 
