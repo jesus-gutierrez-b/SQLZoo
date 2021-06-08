@@ -79,4 +79,9 @@ AND teamid != 'GER';
 -- 9. Show teamname and the total number of goals scored.
 -- COUNT and GROUP BY
 -- You should COUNT(*) in the SELECT line and GROUP BY teamname
+SELECT teamname, COUNT(*) AS goals
+FROM eteam JOIN goal ON id=teamid
+GROUP BY teamname;
+
+-- 10. Show the stadium and the number of goals scored in each stadium.
 
