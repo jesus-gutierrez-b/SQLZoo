@@ -30,4 +30,24 @@ WHERE title = 'Casablanca';
 -- what is a cast list?
 -- The cast list is the names of the actors who were in the movie.
 -- Use movieid=11768, (or whatever value you got from the previous question)
+SELECT name
+FROM actor JOIN casting ON actor.id = actorid
+           JOIN movie ON movie.id = movieid
+WHERE movie.id = 11768;
+
+--7. Obtain the cast list for the film 'Alien'
+SELECT name
+FROM actor JOIN casting ON actor.id = actorid
+           JOIN movie ON movie.id = movieid
+WHERE movie.title = 'Alien';
+
+-- 8. List the films in which 'Harrison Ford' has appeared
+SELECT title
+FROM movie JOIN casting ON movieid = movie.id
+           JOIN actor ON actorid = actor.id
+WHERE actor.name = 'Harrison Ford';
+
+-- 9. List the films where 'Harrison Ford' has appeared - but not in the starring role. 
+-- [Note: the ord field of casting gives the position of the actor. 
+-- If ord=1 then this actor is in the starring role]
 
