@@ -21,3 +21,13 @@ FROM actor
 WHERE name = 'Glenn Close';
 
 -- 5. What is the id of the film 'Casablanca'
+SELECT id
+FROM movie
+WHERE title = 'Casablanca';
+
+-- 6. Obtain the cast list for 'Casablanca'.
+
+-- what is a cast list?
+-- The cast list is the names of the actors who were in the movie.
+-- Use movieid=11768, (or whatever value you got from the previous question)
+
