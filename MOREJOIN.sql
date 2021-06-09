@@ -50,4 +50,32 @@ WHERE actor.name = 'Harrison Ford';
 -- 9. List the films where 'Harrison Ford' has appeared - but not in the starring role. 
 -- [Note: the ord field of casting gives the position of the actor. 
 -- If ord=1 then this actor is in the starring role]
+SELECT title
+FROM movie JOIN casting ON movie.id = movieid
+           JOIN actor ON actor.id = actorid
+WHERE actor.name = 'Harrison Ford' 
+AND casting.ord > 1;
+
+--10. List the films together with the leading star for all 1962 films.
+SELECT title, name
+FROM movie JOIN casting ON movie.id = movieid
+           JOIN actor ON actor.id = actorid
+WHERE casting.ord = 1
+AND yr = 1962;
+
+-- 11. Which were the busiest years for 'Rock Hudson', 
+-- show the year and the number of movies he made each year for any year in which he made more than 2 movies.
+SELECT yr, COUNT(title) AS movies FROM
+  movie JOIN casting ON movie.id=movieid
+        JOIN actor   ON actorid=actor.id
+WHERE name ='Rock Hudson'
+GROUP BY yr
+HAVING COUNT(title) > 2;
+
+-- 12. List the film title and the leading actor for all of the films 'Julie Andrews' played in.
+
+-- Did you get "Little Miss Marker twice"?
+-- Julie Andrews starred in the 1980 remake of Little Miss Marker and not the original(1934).
+
+-- Title is not a unique field, create a table of IDs in your subquery
 
