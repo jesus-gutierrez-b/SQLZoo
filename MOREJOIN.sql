@@ -99,6 +99,7 @@ SELECT title, COUNT(actorid)
 FROM movie JOIN casting ON movie.id = movieid
 WHERE yr = 1978
 GROUP BY title
-ORDER BY cOUNT(actorid) DESC, title;
+ORDER BY COUNT(actorid) DESC, title;
 
+-- 15. List all the people who have worked with 'Art Garfunkel'.
 
