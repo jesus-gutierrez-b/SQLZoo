@@ -15,4 +15,14 @@ SELECT teacher.name, dept.name
            ON (teacher.dept=dept.id)
            
 -- 3. Use a different JOIN so that all teachers are listed.
+SELECT teacher.name, dept.name
+FROM teacher LEFT JOIN dept ON teacher.dept = dept.id;
+
+-- 4. Use a different JOIN so that all departments are listed.
+SELECT teacher.name, dept.name
+FROM teacher RIGHT JOIN dept ON teacher.dept = dept.id;
+
+--5. Use COALESCE to print the mobile number.
+-- Use the number '07986 444 2266' if there is no number given.
+-- Show teacher name and mobile number or '07986 444 2266'
 
