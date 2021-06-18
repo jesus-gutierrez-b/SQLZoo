@@ -33,3 +33,9 @@ FROM teacher;
 SELECT teacher.name, COALESCE(dept.name, 'None') 
 FROM teacher LEFT JOIN dept ON teacher.dept = dept.id;
 
+-- 7. Use COUNT to show the number of teachers and the number of mobile phones.
+SELECT COUNT(name), COUNT(mobile)
+FROM teacher;
+
+-- 8. Use COUNT and GROUP BY dept.name to show each department and the number of staff. 
+-- Use a RIGHT JOIN to ensure that the Engineering department is listed.
