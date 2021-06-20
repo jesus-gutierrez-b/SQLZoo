@@ -27,7 +27,7 @@ AND subject='(8) Computer Science';
 
 -- HINT
 -- You will need to use SUM over the response column and GROUP BY subject
-SELECT subject, SUM(response)
+SELECT subject, SUM(response) AS 'total students'
 FROM nss
 WHERE question = 'Q22'
 AND subject IN ('(8) Computer Science', '(H) Creative Arts and Design')
@@ -38,4 +38,23 @@ GROUP BY subject;
 -- HINT
 -- The A_STRONGLY_AGREE column is a percentage. 
 -- To work out the total number of students who strongly agree you must multiply this percentage by the number who responded (response) and divide by 100 - take the SUM of that.
+SELECT subject, SUM(A_STRONGLY_AGREE*response/100) AS students
+FROM nss
+WHERE question = 'Q22'
+AND subject IN ('(8) Computer Science', '(H) Creative Arts and Design')
+GROUP BY subject;
+
+-- 6. Show the percentage of students who A_STRONGLY_AGREE to question 22 for the subject '(8) Computer Science' show the same figure for the subject '(H) Creative Arts and Design'.
+
+-- Use the ROUND function to show the percentage without decimal places.
+SELECT subject, ROUND(SUM(response*A_STRONGLY_AGREE) / SUM(response))
+FROM nss
+WHERE question = 'Q22'
+AND subject IN ('(8) Computer Science', '(H) Creative Arts and Design')
+GROUP BY subject;
+
+-- 7. Show the average scores for question 'Q22' for each institution that include 'Manchester' in the name.
+
+-- The column score is a percentage - you must use the method outlined above to multiply the percentage by the response and divide by the total response. 
+-- Give your answer rounded to the nearest whole number.
 
