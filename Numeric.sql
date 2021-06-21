@@ -57,4 +57,16 @@ GROUP BY subject;
 
 -- The column score is a percentage - you must use the method outlined above to multiply the percentage by the response and divide by the total response. 
 -- Give your answer rounded to the nearest whole number.
+SELECT institution, ROUND( SUM(score*response) / SUM(response) ) AS score
+FROM nss
+WHERE question = 'Q22'
+AND institution LIKE '%Manchester%'
+GROUP BY institution;
 
+-- 8. Show the institution, the total sample size and the number of computing students for institutions in Manchester for 'Q01'.
+SELECT institution, SUM(sample) AS sample, 
+    SUM(CASE WHEN subject = '(8) Computer Science' THEN sample ELSE 0 END) AS comp
+  FROM nss
+  WHERE institution LIKE '%Manchester%'
+    AND question='Q01'
+  GROUP BY institution;
