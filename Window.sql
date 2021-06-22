@@ -29,4 +29,14 @@ ORDER BY party,yr;
 
 -- Use PARTITION BY constituency to show the ranking of each party in Edinburgh in 2017. 
 --Order your results so the winners are shown first, then ordered by constituency.
+SELECT constituency, party, votes, 
+RANK() OVER (PARTITION BY constituency ORDER BY votes DESC) AS posn 
+FROM ge
+WHERE constituency BETWEEN 'S14000021' AND 'S14000026'
+AND yr  = 2017
+ORDER BY posn,  constituency;
+
+-- 5. You can use SELECT within SELECT to pick out only the winners in Edinburgh.
+
+-- Show the parties that won for each Edinburgh constituency in 2017.
 
