@@ -39,4 +39,21 @@ ORDER BY posn,  constituency;
 -- 5. You can use SELECT within SELECT to pick out only the winners in Edinburgh.
 
 -- Show the parties that won for each Edinburgh constituency in 2017.
+SELECT constituency, party
+  FROM ge a
+ WHERE constituency BETWEEN 'S14000021' AND 'S14000026'
+   AND yr  = 2017
+AND votes >= ALL(SELECT votes FROM ge b WHERE a.constituency = b.constituency AND b.yr = a.yr)
+ORDER BY constituency;
+
+-- 6. You can use COUNT and GROUP BY to see how each party did in Scotland. 
+-- Scottish constituencies start with 'S'
+
+-- Show how many seats for each party in Scotland in 2017.
+SELECT party, COUNT(*) AS seats
+  FROM ge a
+ WHERE constituency LIKE'S%'
+   AND yr  = 2017 
+ AND votes >= ALL(SELECT votes FROM ge b WHERE a.constituency = b.constituency AND b.yr = a.yr )
+GROUP BY party;
 
