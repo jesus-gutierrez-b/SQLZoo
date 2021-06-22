@@ -40,4 +40,16 @@ ORDER BY whn;
 -- You can filter the data to view only Monday's figures WHERE WEEKDAY(whn) = 0.
 
 -- Show the number of new cases in Italy for each week - show Monday only.
+SELECT name, DATE_FORMAT(whn,'%Y-%m-%d') AS monday, 
+confirmed- LAG(confirmed, 1) OVER (PARTITION BY name ORDER BY whn) AS 'new cases'
+ FROM covid
+WHERE name = 'Italy'
+AND WEEKDAY(whn) = 0
+ORDER BY whn;
 
+-- 5. You can JOIN a table using DATE arithmetic. 
+-- This will give different results if data is missing.
+
+-- Show the number of new cases in Italy for each week - show Monday only.
+
+-- In the sample query we JOIN this week tw with last week lw using the DATE_ADD function.
