@@ -69,4 +69,12 @@ ORDER BY tw.whn;
 -- Notice that while Spain has the second highest confirmed cases, Italy has the second highest number of deaths due to the virus.
 
 -- Include the ranking for the number of deaths in the table.
-
+SELECT 
+   name,
+   confirmed,
+   RANK() OVER (ORDER BY confirmed DESC) rc,
+   deaths,
+   RANK() OVER (ORDER BY deaths DESC) dc
+  FROM covid
+WHERE whn = '2020-04-20'
+ORDER BY confirmed DESC
