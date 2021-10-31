@@ -42,4 +42,26 @@ SELECT DISTINCT a.company, a.num FROM route a
 JOIN route b ON (a.company = b.company AND a.num = b.num)
 WHERE a.stop = 115 AND b.stop = 137;
 
---8. Give a list of the services which connect the stops 'Craiglockhart' and 'Tollcross'
+-- 8. Give a list of the services which connect the stops 'Craiglockhart' and 'Tollcross'
+SELECT a.company, a.num
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name = 'Craiglockhart' AND stopb.name = 'Tollcross';
+
+-- 9. Give a distinct list of the stops which may be reached from 'Craiglockhart' by taking one bus, including 'Craiglockhart' itself, offered by the LRT company. 
+-- Include the company and bus no. of the relevant services.
+SELECT DISTINCT stopb.name, a.company, a.num
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name = 'Craiglockhart' AND a.company = 'LRT';
+
+-- 10. Find the routes involving two buses that can go from Craiglockhart to Lochend.
+-- Show the bus no. and company for the first bus, the name of the stop for the transfer,
+-- and the bus no. and company for the second bus.
+
+-- Hint
+-- Self-join twice to find buses that visit Craiglockhart and Lochend, then join those on matching stops.
