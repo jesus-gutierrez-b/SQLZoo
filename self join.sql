@@ -65,3 +65,26 @@ WHERE stopa.name = 'Craiglockhart' AND a.company = 'LRT';
 
 -- Hint
 -- Self-join twice to find buses that visit Craiglockhart and Lochend, then join those on matching stops.
+SELECT DISTINCT first_train.num, first_train.company, my_stop.name, second_train.num, second_train.company
+FROM
+(
+	SELECT a.num, a.company, b.stop
+	FROM route a
+	JOIN route b ON (a.num = b.num AND a.company = b.company)
+	WHERE a.stop = (
+	SELECT id
+	FROM stops
+	WHERE name = 'Craiglockhart') 
+) AS first_train
+JOIN
+(
+	SELECT a.num, a.company, b.stop
+	FROM route a
+	JOIN route b ON (a.num = b.num AND a.company = b.company)
+	WHERE a.stop = (
+	SELECT id
+	FROM stops
+	WHERE name = 'Lochend') 
+) AS second_train ON (first_train.stop = second_train.stop)
+JOIN stops AS my_stop ON (first_train.stop = my_stop.id)
+ORDER BY first_train.num, my_stop.name, second_train.num;
